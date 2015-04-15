@@ -10,9 +10,10 @@ public class C1 {
 		String b = "camila";
 		String c = "pedro";
 		String d = "ordep";
+		String e = "o cachorro latiu    ";
 
-		System.out.println(isPermutation(a, b));
-		System.out.println(isPermutation(c, d));
+		System.out.println(replaceSpace(e));
+//		System.out.println(isPermutation(c, d));
 	}
 
 	// 1.1
@@ -51,5 +52,31 @@ public class C1 {
 				return false;
 		}
 		return true;
+	}
+
+	// 1.4
+	public static String replaceSpace(String s) {
+		char sc[] = s.toCharArray();
+
+		for (int i = 0; i < s.length(); i++) {
+			if (sc[i] == ' ') {
+				sc = shiftRight(sc, i);
+			}
+		}
+		return new String(sc);
+	}
+
+	// 1.4 aux method
+	private static char[] shiftRight(char sc[], int p) {
+		sc[p] = '%';
+
+		for (int i = sc.length-1; i > p; i--) {
+			sc[i] = sc[i - 2];
+		}
+
+		sc[p + 1] = '2';
+		sc[p + 2] = '0';
+
+		return sc;
 	}
 }
